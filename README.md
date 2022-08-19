@@ -1,11 +1,7 @@
 
 
-11ty-contentful-starter
+hodgepodge-creatives
 =====
-
-An example site made using [Contentful](https://www.contentful.com/) and [11ty](https://www.11ty.dev/). It's automatically deployed via GitHub Actions and then hosted by GitHub Pages. Data lives in Contentful, code lives with GitHub, and that's all the services you need to deploy and host a static site.
-
-![Screenshot of Front Page](images/front_page.png)
 
 What is this about?
 =====

@@ -1,11 +1,9 @@
 {
-  "name": "11ty-contentful-starter",
+  "name": "hodgepodge-creatives",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "npx eleventy --pathprefix=11ty-contentful-starter",
-    "build-dev": "npx eleventy",
+    "build": "npx eleventy",
     "watch": "npx eleventy --watch",
     "serve": "npx eleventy --serve",
     "debug": "DEBUG=* npx eleventy"

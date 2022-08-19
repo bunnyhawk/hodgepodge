@@ -8,13 +8,14 @@ const client = contentful.createClient({
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 
 module.exports = async () => {
-    return client.getEntries({ content_type: 'page', order: 'sys.createdAt' }).then(function(response) {
-            const page = response.items
-                .map(function(page) {
-                    page.fields.date= new Date(page.sys.updatedAt);
-                    return page.fields;
-                });
-            return page;
-        })
-        .catch(console.error);
+    return client.getEntries({ content_type: 'section' }).then(function(response) {
+        const page = response.items
+          .map(function(page) {
+            page.fields.date= new Date(page.sys.updatedAt);
+            return page.fields;
+          });
+        console.log(page);
+        return page;
+      })
+      .catch(console.error);
 };

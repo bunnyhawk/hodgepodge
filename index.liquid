@@ -1,0 +1,14 @@
+---
+pagination:
+    size: 1
+    alias: section
+    addAllPagesToCollections: true
+tags: "section"
+layout: layout.liquid
+---
+  <script>console.log({{section|json}});</script>
+  {%- for component in section -%}
+    {% comment %} <script>console.log({{component|json}});</script> {% endcomment %}
+    {% contentBlock component %}
+
+  {% endfor %}
