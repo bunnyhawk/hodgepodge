@@ -1,14 +1,113 @@
 ---
-pagination:
-    size: 1
-    alias: section
-    addAllPagesToCollections: true
-tags: "section"
-layout: layout.liquid
----
-  <script>console.log({{section|json}});</script>
-  {%- for component in section -%}
-    {% comment %} <script>console.log({{component|json}});</script> {% endcomment %}
-    {% contentBlock component %}
 
-  {% endfor %}
+pagination:
+    data: contentful-page
+    size: 1
+    alias: page
+
+layout: layout.liquid
+
+---
+  <script>console.log({{page|json}});</script>
+<header class="orange">
+  <a href="{{'/' | url}}">
+    {% imageProcessing page.imageHeader %}
+  </a>
+</header>
+<main>
+  <section>
+    <h1>{{page.titlePage}}</h1>
+    <a href="#contact" class="cta pink">Get Started</a>
+  </section>
+  <section class="blue">
+    <h2>{{page.headerWho}}</h2>
+    <ul class="brands-list">
+      {%- for brand in page.brandImages -%}
+        <li>{% imageProcessing brand %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section>
+    <div class="container">
+      <h2>{{page.headerWhat}}</h2>
+      {% documentToHtmlString page.subCopyWhat %}
+      <ul class="what-list">
+        {%- for doIcon in page.whatWeDoIconImages -%}
+          <li>{% imageProcessing doIcon %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  <section class="pink">
+    <div class="container">
+      <h2>{{page.headerWhy}}</h2>
+      {% documentToHtmlString page.copyWhy %}
+      <a href="#contact" class="cta center blue">Learn more</a>
+    </div>
+  </section>
+  <section>
+    <h2>{{page.headerWhatSay}}</h2>
+    {% documentToHtmlString page.subCopyWhatSay %}
+    <ul class="feedback-list">
+      {% for entry in page.theySayEntries -%}
+        {% theySayEntry entry %}
+      {% endfor -%}
+    </ul>
+  </section>
+  <section>
+    <h2>{{page.headerDuo}}</h2>
+    {% documentToHtmlString page.subCopyDuo %}
+    <div class="bios">
+      <div class="bio blue">
+        {% imageProcessing page.imageDuoAdriana 'bio-pic' %}
+        {% documentToHtmlString page.copyDuoAdriana -%}
+      </div>
+      <div class="bio blue">
+        {% imageProcessing page.imageDuoMandi 'bio-pic' %}
+        {% documentToHtmlString page.copyDuoMandi -%}
+      </div>
+    </div>
+    <a href="#contact" class="cta center pink">Work with us</a>
+  </section>
+  <section class="yellow">
+    <div class="container">
+      <h2>{{page.headerBiz}}</h2>
+      {% documentToHtmlString page.subCopyBiz %}
+      <ul class="baddie-list">
+        <li class="baddie">Resident</li>
+        <li class="baddie">The Loft 325</li>
+        <li class="baddie">Kati Kalo</li>
+      </ul>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>{{page.headerConnect}}</h2>
+    <div class="blue">
+      <div>
+        <p>{{page.subHeaderConnect}}</p>
+        <p>{{page.subSubHeaderConnect}}</p>
+      </div>
+      <form method="post">
+        <label>Name
+          <input name="submitted-name" autocomplete="name">
+        </label>
+        <label>Email*
+          <input name="submitted-email" autocomplete="email" required>
+        </label>
+        <label>Your Monthly Budget
+          <select>
+            <option></option>
+          </select>
+        </label>
+        <label>What are your goals?
+          <textarea></textarea>
+        </label>
+        <button class="cta pink">{{page.subCopyConnect}}</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="orange">
+  <p>{{page.footerText}}</p>
+</footer>
+

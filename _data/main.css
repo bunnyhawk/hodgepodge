@@ -4,7 +4,7 @@
 /* Yellow: rgba(242, 198, 85) */
 
 .orange {
-  background-color: rgb(230, 114, 83);
+  background-color: #E67253;
   color: #fff;
 }
 
@@ -88,13 +88,17 @@ button.cta {
   flex-direction: row;
 }
 
+.what-list li {
+  width: calc(100% / 3);
+}
+
 .feedback-list {
   justify-content: space-between;
   margin: 0 2rem;
 }
 
 .feedback {
-  border: 3px solid rgb(230, 114, 83);
+  border: 3px solid #E67253;
   border-radius: 10px;
   padding: 1rem;
   width: calc(100% / 3 - 100px);

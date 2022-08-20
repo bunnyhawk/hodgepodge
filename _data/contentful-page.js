@@ -1,21 +1,34 @@
 const contentful = require("contentful");
 const client = contentful.createClient({
-    // This is the space ID. A space is like a project folder in Contentful terms
-    space: process.env.CTFL_SPACE,
-    // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-    accessToken: process.env.CTFL_ACCESSTOKEN
+  space: process.env.CTFL_SPACE,
+  accessToken: process.env.CTFL_ACCESSTOKEN
 });
-// This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
+
+
 
 module.exports = async () => {
-    return client.getEntries({ content_type: 'section' }).then(function(response) {
-        const page = response.items
-          .map(function(page) {
-            page.fields.date= new Date(page.sys.updatedAt);
-            return page.fields;
-          });
-        console.log(page);
-        return page;
-      })
-      .catch(console.error);
+
+  const getPageEntries = (contentType) => {
+    return client.getEntries({ content_type: contentType }).then(function (response) {
+      const page = response.items
+        .map(function (page) {
+          page.fields.date = new Date(page.sys.updatedAt);
+          return page.fields;
+        });
+
+      return page;
+    }).catch(console.error);
+  }
+
+  const homePageEntries = await getPageEntries('homepage');
+  const brandEntries = await getPageEntries('brand');
+  const theySayEntries = await getPageEntries('theySayEntry');
+  const whatWeDoIcons = await getPageEntries('whatWeDoIcons');
+
+  return [{
+    ...homePageEntries[0],
+    ...brandEntries[0],
+    ...whatWeDoIcons[0],
+    theySayEntries,
+  }];
 };

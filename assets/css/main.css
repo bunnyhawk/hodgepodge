@@ -2,6 +2,13 @@
 /* Blue: rgb(20, 61, 119) */
 /* Pink: rgb(218, 125, 177) */
 /* Yellow: rgba(242, 198, 85) */
+html,
+body {
+  font-family: 'neue-kabel', sans-serif;
+  font-style: normal;
+}
+
+
 
 .orange {
   background-color: rgb(230, 114, 83);
@@ -80,12 +87,22 @@ button.cta {
   margin: 0 auto;
 }
 
+.brands-list,
 .what-list,
 .feedback-list,
 .bios,
 .baddie-list {
   display: flex;
   flex-direction: row;
+}
+
+.what-list li {
+  width: calc(100% / 3);
+}
+
+.brands-list img,
+.what-list img {
+  width: 100%;
 }
 
 .feedback-list {
@@ -108,4 +125,8 @@ button.cta {
   border-radius: 10px;
   max-width: 300px;
   padding: 1rem;
+}
+
+.bio-pic {
+  width: 100%;
 }
