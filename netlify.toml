@@ -1,3 +1,4 @@
 [[redirects]]
   from = "/api/submit"
   to = "https://mailthis.to/confirm"
+  status = 200
