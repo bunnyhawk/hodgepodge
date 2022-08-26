@@ -1,4 +1,6 @@
-[[redirects]]
-  from = "https://mailthis.to/*"
-  to = "https://lucent-narwhal-2c6811.netlify.app"
+[[redirects]]  
+  from = "/api/confirm"
+  to = "https://mailthis.to/confirm"
   status = 200
+  force = true
+  headers = {Access-Control-Allow-Origin = "*"}
