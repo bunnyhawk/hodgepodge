@@ -46,7 +46,7 @@ const submitForm = (e) => {
   const form = document.getElementById('form');
   const formData = new FormData(form);
 
-  fetch(EMAIL_API, {
+  fetch('/', {
     method: 'POST',
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString()
