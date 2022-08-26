@@ -53,7 +53,7 @@ const submitForm = (e) => {
     name: formData.get('submitted-name'),
     '_subject': 'Contact form submitted',
     '_honeypot': '',
-    // '_after': 'https://lucent-narwhal-2c6811.netlify.app/'
+    '_after': 'https://lucent-narwhal-2c6811.netlify.app/'
   };
 
   fetch(EMAIL_API, {

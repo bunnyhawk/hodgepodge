@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/"
-  to = "https://mailthis.to/*"
+  from = "https://mailthis.to/*"
+  to = "/"
   status = 200
   force = true
