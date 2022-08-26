@@ -60,7 +60,8 @@ const submitForm = (e) => {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(formDataValues)
   }).then(() => location.href = 'https://mailthis.to/confirm');
