@@ -58,16 +58,13 @@ const submitForm = (e) => {
 
   fetch(EMAIL_API, {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formDataValues)
-  }).then(() => location.href = '/api/confirm');
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formDataValues).toString()
+  }).then(() => console.log("Form successfully submitted"));
 }
 
 const formSubmitButton = document.getElementById('submit-form');
-formSubmitButton.addEventListener('click', submitForm)
+formSubmitButton.addEventListener('click', submitForm);
 
 window.onload = function () {
   var elements = document.getElementsByClassName('typewrite');
