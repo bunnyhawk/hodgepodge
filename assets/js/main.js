@@ -63,7 +63,7 @@ const submitForm = (e) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(formDataValues)
-  }).then((response) => response.json()).then(() => location.href = 'https://mailthis.to/confirm');
+  }).then(() => location.href = 'https://mailthis.to/confirm');
 }
 
 const formSubmitButton = document.getElementById('submit-form');
