@@ -45,21 +45,11 @@ const submitForm = (e) => {
   e.preventDefault();
   const form = document.getElementById('form');
   const formData = new FormData(form);
-  const formDataValues = {
-    name: formData.get('submitted-name'),
-    email: formData.get('submitted-email'),
-    budget: formData.get('submitted-budget'),
-    goals: formData.get('submitted-goals'),
-    name: formData.get('submitted-name'),
-    '_subject': 'Contact form submitted',
-    '_honeypot': '',
-    '_after': 'https://lucent-narwhal-2c6811.netlify.app/'
-  };
 
   fetch(EMAIL_API, {
     method: 'POST',
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formDataValues).toString()
+    body: new URLSearchParams(formData).toString()
   }).then(() => console.log("Form successfully submitted"));
 }
 

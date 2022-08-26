@@ -104,7 +104,7 @@ layout: layout.liquid
         <h3 class="contact-form-header">{{page.subHeaderConnect}}</h3>
         <p>{{page.subSubHeaderConnect}}</p>
       </div>
-      <form id="form" method="POST" data-netlify="true">
+      <form id="form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <label>Name
           <input name="submitted-name" autocomplete="name">
         </label>
@@ -123,7 +123,7 @@ layout: layout.liquid
         <label>What are your goals?
           <textarea name="submitted-goals"></textarea>
         </label>
-        <input type="hidden" name="_honeypot" value="">
+        <input type="hidden" name="bot-field" />
         <button id="submit-form" class="cta pink" type="submit">{{page.subCopyConnect}}</button>
       </form>
     </div>
