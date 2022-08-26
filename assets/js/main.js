@@ -41,15 +41,19 @@ TxtType.prototype.tick = function () {
   }, delta);
 };
 
-const form = document.getElementById('form');
-const formSubmitted = document.getElementById('form-submitted');
-const formSuccessCopy = document.getElementById('form-submitted-success');
-const formButton = document.getElementById('submit-form');
+const form = document.querySelector('#form');
+const formSubmitted = document.querySelector('#form-submitted');
+const formSuccessCopy = document.querySelector('#form-submitted-success');
+const formButton = document.querySelector('#submit-form');
+
+const hideForm = () => {
+  form.classList.add('hidden');
+  formSubmitted.classList.remove('hidden');
+}
 
 const showSubmittedCopy = () => {
-  form.classList.add('hidden');
+  hideForm();
   formSuccessCopy.classList.remove('hidden');
-  formSubmitted.classList.remove('hidden');
 }
 
 const resetForm = (e) => {
@@ -70,7 +74,7 @@ const hideSubmittedCopy = () => {
 
 const submitForm = (e) => {
   e.preventDefault();
-  const form = document.getElementById('form');
+  const form = document.querySelector('#form');
   const formData = new FormData(form);
 
   formButton.disabled = true;
@@ -79,11 +83,17 @@ const submitForm = (e) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData).toString()
-  }).then(() => showSubmittedCopy).catch((err) => {
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error("Not 2xx response", { cause: res });
+    } else {
+      showSubmittedCopy();
+    }
+  }).catch((err) => {
     console.log(err)
-    const formErrorCopy = document.getElementById('form-submitted-error');
+    const formErrorCopy = document.querySelector('#form-submitted-error');
+    hideForm();
     formErrorCopy.classList.remove('hidden');
-    hideSubmittedCopy();
   });
 }
 

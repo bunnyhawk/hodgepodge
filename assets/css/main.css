@@ -99,6 +99,10 @@ header img {
   width: 200px;
 }
 
+.cta:disabled {
+  opacity: .6;
+}
+
 button.cta {
   border: 0;
   padding-left: 0;
@@ -289,6 +293,7 @@ button.cta {
   margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
+  min-height: 536px;
   max-width: 1268px;
   text-align: left;
 }
