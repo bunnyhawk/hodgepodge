@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "https://mailthis.to/*"
-  to = "https://lucent-narwhal-2c6811.netlify.app/"
+  from = "/"
+  to = "https://mailthis.to/*"
   status = 200
   force = true
