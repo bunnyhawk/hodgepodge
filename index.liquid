@@ -112,12 +112,11 @@ layout: layout.liquid
           <input name="submitted-email" autocomplete="email" required>
         </label>
         <label>Your Monthly Budget
-          <select name="submitted-budget">
-            <option>Please select your monthly budget</option>
-            <option>Budget #1</option>
-            <option>Budget #2</option>
-            <option>Budget #3</option>
-            <option>Budget #4</option>
+          <select name="submitted-monthly-budget">
+            <option value="" disabled selected>Please select your monthly budget</option>
+            {% for budget in page.copyFormBudgetOptions -%}
+              <option>{{budget}}</option>
+            {% endfor -%}
           </select>
         </label>
         <label>What are your goals?
@@ -126,6 +125,17 @@ layout: layout.liquid
         <input type="hidden" name="bot-field" />
         <button id="submit-form" class="cta pink" type="submit">{{page.subCopyConnect}}</button>
       </form>
+      <div id="form-submitted" class="hidden">
+        <div id="form-submitted-success" class="hidden">
+          <h4 class="contact-form-header">{{page.headerFormSubmitted}}</h4>
+          {% documentToHtmlString page.subCopyFormSubmitted %}
+        </div>
+        <div id="form-submitted-error" class="hidden">
+          <h4 class="contact-form-header">{{page.headerFormSubmitted}}</h4>
+          {% documentToHtmlString page.subCopyFormSubmitted %}
+        </div>
+        <button id="reset-form" class="cta pink">{{page.ctaFormSubmitted}}</button>
+      </div>
     </div>
   </section>
 </main>

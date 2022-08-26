@@ -329,6 +329,10 @@ button.cta {
   padding-right: 1rem;
 }
 
+.hidden {
+  display: none;
+}
+
 footer {
   font-size: 2rem;
   font-weight: 900;

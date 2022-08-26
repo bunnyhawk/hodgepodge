@@ -41,21 +41,58 @@ TxtType.prototype.tick = function () {
   }, delta);
 };
 
+const form = document.getElementById('form');
+const formSubmitted = document.getElementById('form-submitted');
+const formSuccessCopy = document.getElementById('form-submitted-success');
+const formButton = document.getElementById('submit-form');
+
+const showSubmittedCopy = () => {
+  form.classList.add('hidden');
+  formSuccessCopy.classList.remove('hidden');
+  formSubmitted.classList.remove('hidden');
+}
+
+const resetForm = (e) => {
+  if (e && e.preventDefault) {
+    e.preventDefault();
+  }
+
+  form.reset();
+  form.classList.remove('hidden');
+  hideSubmittedCopy();
+}
+
+const hideSubmittedCopy = () => {
+  formSuccessCopy.classList.add('hidden');
+  formSubmitted.classList.add('hidden');
+  formButton.disabled = false;
+}
+
 const submitForm = (e) => {
   e.preventDefault();
   const form = document.getElementById('form');
   const formData = new FormData(form);
 
+  formButton.disabled = true;
+
   fetch('/', {
     method: 'POST',
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData).toString()
-  }).then(() => console.log("Form successfully submitted")).catch((error) => alert(error));;
+  }).then(() => showSubmittedCopy).catch((err) => {
+    console.log(err)
+    const formErrorCopy = document.getElementById('form-submitted-error');
+    formErrorCopy.classList.remove('hidden');
+    hideSubmittedCopy();
+  });
 }
 
 document
-  .querySelector("form")
-  .addEventListener("submit", submitForm);
+  .querySelector('form')
+  .addEventListener('submit', submitForm);
+document
+  .getElementById('reset-form')
+  .addEventListener('click', resetForm);
 
 window.onload = function () {
   var elements = document.getElementsByClassName('typewrite');
