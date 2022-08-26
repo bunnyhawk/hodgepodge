@@ -104,7 +104,7 @@ layout: layout.liquid
         <h3 class="contact-form-header">{{page.subHeaderConnect}}</h3>
         <p>{{page.subSubHeaderConnect}}</p>
       </div>
-      <form method="post">
+      <form id="form">
         <label>Name
           <input name="submitted-name" autocomplete="name">
         </label>
@@ -112,14 +112,21 @@ layout: layout.liquid
           <input name="submitted-email" autocomplete="email" required>
         </label>
         <label>Your Monthly Budget
-          <select>
+          <select name="submitted-budget">
             <option>Please select your monthly budget</option>
+            <option>Budget #1</option>
+            <option>Budget #2</option>
+            <option>Budget #3</option>
+            <option>Budget #4</option>
           </select>
         </label>
         <label>What are your goals?
-          <textarea></textarea>
+          <textarea name="submitted-goals"></textarea>
         </label>
-        <button class="cta pink">{{page.subCopyConnect}}</button>
+        <input type="hidden" name="_after" value="{{url}}">
+        <input type="hidden" name="_honeypot" value="">
+        <input type="hidden" name="_confirmation" value="">
+        <button id="submit-form" class="cta pink">{{page.subCopyConnect}}</button>
       </form>
     </div>
   </section>

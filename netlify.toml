@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://mailthis.to/confirm"
+  to = "/"
+  status = 200
+  force = true

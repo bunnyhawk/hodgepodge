@@ -1,4 +1,5 @@
 
+const EMAIL_API = 'https://mailthis.to/positronicshell@gmail.com';
 const TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -39,6 +40,34 @@ TxtType.prototype.tick = function () {
     that.tick();
   }, delta);
 };
+
+const submitForm = (e) => {
+  e.preventDefault();
+  const form = document.getElementById('form');
+  const formData = new FormData(form);
+  const formDataValues = {
+    name: formData.get('submitted-name'),
+    email: formData.get('submitted-email'),
+    budget: formData.get('submitted-budget'),
+    goals: formData.get('submitted-goals'),
+    name: formData.get('submitted-name'),
+    '_subject': 'Contact form submitted',
+    '_honeypot': '',
+    '_after': 'https://lucent-narwhal-2c6811.netlify.app/'
+  };
+
+  fetch(EMAIL_API, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formDataValues)
+  }).then(() => location.href = 'https://mailthis.to/confirm');
+}
+
+const formSubmitButton = document.getElementById('submit-form');
+formSubmitButton.addEventListener('click', submitForm)
 
 window.onload = function () {
   var elements = document.getElementsByClassName('typewrite');
