@@ -4,8 +4,6 @@ const client = contentful.createClient({
   accessToken: process.env.CTFL_ACCESSTOKEN
 });
 
-
-
 module.exports = async () => {
 
   const getPageEntries = (contentType) => {
@@ -24,11 +22,13 @@ module.exports = async () => {
   const brandEntries = await getPageEntries('brand');
   const theySayEntries = await getPageEntries('theySayEntry');
   const whatWeDoIcons = await getPageEntries('whatWeDoIcons');
+  const baddies = await getPageEntries('baddies');
 
   return [{
     ...homePageEntries[0],
     ...brandEntries[0],
     ...whatWeDoIcons[0],
     theySayEntries,
+    baddies
   }];
 };

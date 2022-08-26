@@ -9,7 +9,7 @@
     "debug": "DEBUG=* npx eleventy"
   },
   "keywords": [],
-  "author": "",
+  "author": "Robert Higdon",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",

@@ -8,32 +8,49 @@ pagination:
 layout: layout.liquid
 
 ---
-  <script>console.log({{page|json}});</script>
-<header class="orange">
+<script>console.log({{page|json}});</script>
+<header class="header orange">
   <a href="{{'/' | url}}">
-    {% imageProcessing page.imageHeader %}
+    <img src="https:{{page.imageHeader.fields.file.url}}"
+        alt="Hodgepodge Creatives Logo">
   </a>
 </header>
 <main>
-  <section>
-    <h1>{{page.titlePage}}</h1>
+  <section class="hero">
+    <h1 class="hero-header">
+      <span>Get Better</span>
+      <span class="typewrite" data-period="2000"
+        data-type='{{page.changingCopyHero}}'>
+        <span class="wrap">&nbsp;</span>
+      </span>
+      <span>With Hodgepodge.</span>
+    </h1>
     <a href="#contact" class="cta pink">Get Started</a>
   </section>
   <section class="blue">
     <h2>{{page.headerWho}}</h2>
-    <ul class="brands-list">
-      {%- for brand in page.brandImages -%}
-        <li>{% imageProcessing brand %}</li>
-      {% endfor %}
-    </ul>
+    <div class="carousel" aria-label="carousel" Tabindex="0">
+      <a class="carousel__skip-link" href="#skip-link">Skip the Carousel</a>
+      <ul class="slides brands-list">
+        {%- for brand in page.brandImages -%}
+          <li class="slides-item" id="slide-{{forloop.index+1}}" aria-label="slide {{forloop.index+1}} of {{page.brandImages.length + 1}}" tabindex="0">
+            {% imageProcessing brand %}
+          </li>
+        {% endfor %}   
+      </ul>
+      <div class="carousel__skip-message" id="skip-link" tabindex="0"></div>
+    </div>
   </section>
   <section>
     <div class="container">
       <h2>{{page.headerWhat}}</h2>
-      {% documentToHtmlString page.subCopyWhat %}
+      <div class="sub-header">{% documentToHtmlString page.subCopyWhat %}</div>
       <ul class="what-list">
         {%- for doIcon in page.whatWeDoIconImages -%}
-          <li>{% imageProcessing doIcon %}</li>
+          <li>
+            {% imageProcessing doIcon %}
+            <span class="what-item">{{ doIcon.fields.title }}</span>
+          </li>
         {% endfor %}
       </ul>
     </div>
@@ -41,22 +58,22 @@ layout: layout.liquid
   <section class="pink">
     <div class="container">
       <h2>{{page.headerWhy}}</h2>
-      {% documentToHtmlString page.copyWhy %}
-      <a href="#contact" class="cta center blue">Learn more</a>
+      <div class="text-left">{% documentToHtmlString page.copyWhy %}</div>
+      <a href="#contact" class="why-cta cta center blue">Learn more</a>
     </div>
   </section>
   <section>
     <h2>{{page.headerWhatSay}}</h2>
-    {% documentToHtmlString page.subCopyWhatSay %}
+    <div class="sub-header">{% documentToHtmlString page.subCopyWhatSay %}</div>
     <ul class="feedback-list">
       {% for entry in page.theySayEntries -%}
         {% theySayEntry entry %}
       {% endfor -%}
     </ul>
   </section>
-  <section>
+  <section class="duo">
     <h2>{{page.headerDuo}}</h2>
-    {% documentToHtmlString page.subCopyDuo %}
+    <div class="sub-header">{% documentToHtmlString page.subCopyDuo %}</div>
     <div class="bios">
       <div class="bio blue">
         {% imageProcessing page.imageDuoAdriana 'bio-pic' %}
@@ -72,19 +89,19 @@ layout: layout.liquid
   <section class="yellow">
     <div class="container">
       <h2>{{page.headerBiz}}</h2>
-      {% documentToHtmlString page.subCopyBiz %}
+      <div class="sub-header">{% documentToHtmlString page.subCopyBiz %}</div>
       <ul class="baddie-list">
-        <li class="baddie">Resident</li>
-        <li class="baddie">The Loft 325</li>
-        <li class="baddie">Kati Kalo</li>
+        {% for entry in page.baddies -%}
+          {% baddie entry %}
+        {% endfor -%}
       </ul>
     </div>
   </section>
   <section id="contact">
     <h2>{{page.headerConnect}}</h2>
-    <div class="blue">
+    <div class="contact-form blue">
       <div>
-        <p>{{page.subHeaderConnect}}</p>
+        <h3 class="contact-form-header">{{page.subHeaderConnect}}</h3>
         <p>{{page.subSubHeaderConnect}}</p>
       </div>
       <form method="post">
@@ -96,7 +113,7 @@ layout: layout.liquid
         </label>
         <label>Your Monthly Budget
           <select>
-            <option></option>
+            <option>Please select your monthly budget</option>
           </select>
         </label>
         <label>What are your goals?
