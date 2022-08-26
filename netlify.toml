@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "https://mailthis.to/*"
-  to = "/"
-  status = 301
-  force = false
-  headers = {Access-Control-Allow-Origin = "*"}
