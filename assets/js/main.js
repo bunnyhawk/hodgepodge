@@ -1,5 +1,46 @@
+const brandSwiper = new Swiper('.brands-swiper', {
+  autoplay: {
+    delay: 2000,
+  },
+  loop: true,
+  slidesPerView: 6,
+  spaceBetween: 10,
+  breakpoints: {
+    360: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    640: {
+      slidesPerView: 6,
+      spaceBetween: 40
+    }
+  },
+  pagination: {
+    el: '.brands-swiper-pagination',
+  },
+});
 
-const EMAIL_API = 'https://mailthis.to/positronicshell@gmail.com';
+const entriesSwiper = new Swiper('.entries-swiper', {
+  autoplay: {
+    delay: 2000,
+  },
+  slidesPerView: 1,
+  spaceBetween: 10,
+  breakpoints: {
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+  },
+  pagination: {
+    el: '.entries-swiper-pagination',
+  },
+});
+
 const TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -11,8 +52,7 @@ const TxtType = function (el, toRotate, period) {
 };
 
 TxtType.prototype.tick = function () {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
+  const fullTxt = this.toRotate[this.loopNum % this.toRotate.length];
 
   if (this.isDeleting) {
     this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -22,8 +62,8 @@ TxtType.prototype.tick = function () {
 
   this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
-  var that = this;
-  var delta = 200 - Math.random() * 100;
+  const that = this;
+  let delta = 200 - Math.random() * 100;
 
   if (this.isDeleting) { delta /= 2; }
 
@@ -105,16 +145,17 @@ document
   .addEventListener('click', resetForm);
 
 window.onload = function () {
-  var elements = document.getElementsByClassName('typewrite');
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-type');
-    var period = elements[i].getAttribute('data-period');
+  const elements = document.getElementsByClassName('typewrite');
+  for (let i = 0; i < elements.length; i++) {
+    const currEl = elements[i];
+    const toRotate = currEl.getAttribute('data-type');
+
     if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
+      new TxtType(currEl, JSON.parse(toRotate), currEl.getAttribute('data-period'));
     }
   }
   // INJECT CSS
-  var css = document.createElement("style");
+  const css = document.createElement("style");
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
 };

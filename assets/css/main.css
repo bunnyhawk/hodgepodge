@@ -121,20 +121,30 @@ button.cta {
 
 .hero {
   background:
-    url(../../images/PATTERN_1.svg) 370px 25px,
-    url(../../images/PATTERN_2.svg) 320px 45px,
-    url(../../images/PATTERN_3.svg) 60px 65px,
-    url(../../images/PATTERN_4.svg) 750px 260px,
-    url(../../images/PATTERN_5.svg) 825px 290px;
+    url(../../images/PATTERN_1.svg),
+    url(../../images/PATTERN_2.svg),
+    url(../../images/PATTERN_3.svg),
+    url(../../images/PATTERN_4.svg),
+    url(../../images/PATTERN_5.svg);
   background-size:
+    55px 55px,
+    55px 55px,
+    50px 50px,
     75px 75px,
-    75px 75px,
-    70px 70px,
-    95px 95px,
-    75px 75px;
+    55px 55px;
+  background-position:
+    170px 5px,
+    120px 15px,
+    15px 28px,
+    280px 310px,
+    330px 330px;
   background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.hero video {
+  display: none;
 }
 
 .hero-header {
@@ -151,11 +161,10 @@ button.cta {
   display: inline-block;
   font-size: 3rem;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
   width: 350px;
 }
 
-.brands-list,
 .what-list,
 .baddie-list {
   display: flex;
@@ -168,14 +177,6 @@ button.cta {
 
 .what-list li {
   width: calc(100% / 3);
-}
-
-.brands-list {
-  justify-content: space-around;
-}
-
-.brands-list li {
-  width: calc(100% / 6);
 }
 
 .brands-list img,
@@ -193,13 +194,10 @@ button.cta {
   text-align: left;
 }
 
-.feedback-list {
-  margin: 3rem 2rem 0;
-}
-
 .feedback {
   border-radius: 10px;
   border: 3px solid rgb(230, 114, 83);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
@@ -218,19 +216,26 @@ button.cta {
 
 .duo {
   background:
-    url(../../images/PATTERN_6.svg) 2% 7%,
-    url(../../images/PATTERN_7.svg) 4% 20%,
-    url(../../images/PATTERN_8.svg) 8% 16%,
-    url(../../images/PATTERN_9.svg) 100% 95%,
-    url(../../images/PATTERN_10.svg) 94% 95%,
-    url(../../images/PATTERN_1.svg) 97% 100%;
+    url(../../images/PATTERN_6.svg),
+    url(../../images/PATTERN_7.svg),
+    url(../../images/PATTERN_8.svg),
+    url(../../images/PATTERN_9.svg),
+    url(../../images/PATTERN_10.svg),
+    url(../../images/PATTERN_1.svg);
   background-size:
-    150px 150px,
-    85px 85px,
-    85px 85px,
-    150px 150px,
-    80px 80px,
-    75px 75px;
+    75px 75px,
+    50px 50px,
+    50px 50px,
+    75px 75px,
+    50px 50px,
+    45px 45px;
+  background-position:
+    -10px -15px,
+    50px -10px,
+    3% 3%,
+    100% 95%,
+    88% 97%,
+    97% 98%;
   background-repeat: no-repeat;
 }
 
@@ -265,15 +270,19 @@ button.cta {
   display: flex;
   flex-direction: column;
   padding: 0 0.5rem;
-  width: calc(100% / 3 - 1rem);
+  width: calc(100% / 3);
 }
 
 .baddie img {
-  width: 100%;
+  margin: 0 auto;
+  width: 95%;
 }
 
 .baddie-logo {
+  align-items: center;
   border-radius: 50%;
+  display: inline-flex;
+  height: 100%;
 }
 
 .baddie-name {
@@ -384,6 +393,33 @@ footer p {
     width: 400px;
   }
 
+  .hero {
+    background-size:
+      75px 75px,
+      75px 75px,
+      70px 70px,
+      95px 95px,
+      75px 75px;
+    background-position:
+      370px 25px,
+      320px 45px,
+      60px 65px,
+      750px 260px,
+      825px 290px;
+  }
+
+  .hero>* {
+    width: 50%
+  }
+
+  .hero video {
+    display: block;
+  }
+
+  .typewrite {
+    text-align: center;
+  }
+
   .feedback-list {
     display: flex;
     flex-direction: row;
@@ -397,6 +433,23 @@ footer p {
     padding-left: .5rem;
     padding-right: .5rem;
     width: calc(100% / 3 - 50px);
+  }
+
+  .duo {
+    background-size:
+      150px 150px,
+      85px 85px,
+      85px 85px,
+      150px 150px,
+      80px 80px,
+      75px 75px;
+    background-position:
+      2% 0%,
+      3% 19%,
+      12% 8%,
+      100% 95%,
+      85% 95%,
+      97% 100%;
   }
 
   .bios {
@@ -414,6 +467,7 @@ footer p {
 
   .baddie {
     max-width: 200px;
+    width: calc(100% / 3 - 3rem);
   }
 
   .contact-form {
@@ -433,6 +487,15 @@ footer p {
     font-size: 4rem;
   }
 
+  .hero {
+    background-position:
+      370px 25px,
+      320px 45px,
+      60px 65px,
+      40% 90%,
+      48% 95%;
+  }
+
   .feedback {
     width: calc(100% / 3 - 100px);
   }
@@ -445,68 +508,16 @@ footer p {
     flex-wrap: nowrap;
   }
 
-}
+  .duo {
+    background-position:
+      2% 7%,
+      4% 20%,
+      8% 16%,
+      100% 95%,
+      94% 95%,
+      97% 100%;
+  }
 
-/* CSS Only Carousel */
-/* Props to Jennifer Wjertzoch on Codepen: https://codepen.io/jwjertzoch */
-
-.carousel {
-  margin: 0 auto;
-  overflow: hidden;
-  text-align: center;
-}
-
-.slides {
-  width: 100%;
-  display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-
-.slides::-webkit-scrollbar {
-  display: none;
-}
-
-.slides-item {
-  align-items: center;
-  border-radius: 10px;
-  display: flex;
-  flex-shrink: 0;
-  font-size: 100px;
-  justify-content: center;
-  margin: 0 1rem;
-  position: relative;
-  scroll-snap-align: start;
-  transform: scale(1);
-  transform-origin: center center;
-  transition: transform .5s;
-  width: 100%;
-}
-
-.carousel__nav {
-  padding: 1.25rem .5rem;
-}
-
-.slider-nav {
-  align-items: center;
-  background-color: #ddd;
-  border-radius: 50%;
-  color: #000;
-  display: inline-flex;
-  height: 1.5rem;
-  justify-content: center;
-  padding: .5rem;
-  position: relative;
-  text-decoration: none;
-  width: 1.5rem;
-}
-
-.slider-nav:hover,
-.slider-nav:active {
-  background-color: #000;
-  color: #fff;
 }
 
 .carousel__skip-link {

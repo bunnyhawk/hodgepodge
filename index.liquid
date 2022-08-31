@@ -17,27 +17,40 @@ layout: layout.liquid
 </header>
 <main>
   <section class="hero">
-    <h1 class="hero-header">
-      <span>Get Better</span>
-      <span class="typewrite" data-period="2000"
-        data-type='{{page.changingCopyHero}}'>
-        <span class="wrap">&nbsp;</span>
-      </span>
-      <span>With Hodgepodge.</span>
-    </h1>
-    <a href="#contact" class="cta pink">Get Started</a>
+    <div class="hero-content">
+      <h1 class="hero-header">
+        <span>Get Better</span>
+        <span class="typewrite" data-period="750"
+          data-type='{{page.changingCopyHero}}'>
+          <span class="wrap">&nbsp;</span>
+        </span>
+        <span>With Hodgepodge.</span>
+      </h1>
+      <a href="#contact" class="cta pink">Get Started</a>
+    </div>
+    
+    <video loop autoplay>
+        <source src="/assets/video/TOP_GIF_01.webm"
+                type="video/webm">
+        <source src="/assets/video/TOP_GIF_01.mp4"
+                type="video/mp4">
+        Sorry, your browser doesn't support embedded videos.
+    </video>
+    
   </section>
   <section class="blue">
     <h2>{{page.headerWho}}</h2>
-    <div class="carousel" aria-label="carousel" Tabindex="0">
+    <div class="brands-swiper swiper" aria-label="carousel" Tabindex="0">
       <a class="carousel__skip-link" href="#skip-link">Skip the Carousel</a>
-      <ul class="slides brands-list">
+      <div class="swiper-wrapper brands-list">
         {%- for brand in page.brandImages -%}
-          <li class="slides-item" id="slide-{{forloop.index+1}}" aria-label="slide {{forloop.index+1}} of {{page.brandImages.length + 1}}" tabindex="0">
+          <div class="swiper-slide" id="slide-{{forloop.index+1}}" aria-label="slide {{forloop.index+1}} of {{page.brandImages.length + 1}}" tabindex="0">
             {% imageProcessing brand %}
-          </li>
+          </div>
         {% endfor %}   
-      </ul>
+      </div>
+      <div class="brands-swiper-pagination"></div>
+
       <div class="carousel__skip-message" id="skip-link" tabindex="0"></div>
     </div>
   </section>
@@ -65,11 +78,14 @@ layout: layout.liquid
   <section>
     <h2>{{page.headerWhatSay}}</h2>
     <div class="sub-header">{% documentToHtmlString page.subCopyWhatSay %}</div>
-    <ul class="feedback-list">
-      {% for entry in page.theySayEntries -%}
-        {% theySayEntry entry %}
-      {% endfor -%}
-    </ul>
+    <div class="entries-swiper swiper">
+      <ul class="swiper-wrapper">
+        {% for entry in page.theySayEntries -%}
+          {% theySayEntry entry %}
+        {% endfor -%}
+      </ul>
+      <div class="entries-swiper-pagination"></div>
+    </div>
   </section>
   <section class="duo">
     <h2>{{page.headerDuo}}</h2>

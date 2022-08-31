@@ -30,7 +30,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode("theySayEntry", function (entry) {
     return `
-      <li class="feedback">
+      <li class="feedback swiper-slide">
         <p>${entry.theySayCopy}</p>
         <div class="source">
           <strong>${entry.theySayPerson}</strong>
