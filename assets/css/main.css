@@ -280,7 +280,7 @@ button.cta {
 
 .baddie img {
   margin: 0 auto;
-  width: 95%;
+  width: 100%;
 }
 
 .baddie-logo {
@@ -389,12 +389,12 @@ footer p {
     height: 150px;
   }
 
-  h1,
-  .typewrite {
+  h1 {
     font-size: 3.5rem;
   }
 
   .typewrite {
+    font-size: 3.4rem;
     width: 400px;
   }
 
@@ -411,6 +411,7 @@ footer p {
       60px 65px,
       750px 260px,
       825px 290px;
+    padding: 4rem 0 4rem 4rem;
   }
 
   .hero>* {
@@ -471,6 +472,10 @@ footer p {
     width: calc(100% / 3 - 3rem);
   }
 
+  .baddies-header {
+    max-width: 100%;
+  }
+
   .contact-form {
     flex-direction: row;
   }
@@ -489,7 +494,9 @@ footer p {
   }
 
   .typewrite {
+    font-size: 3.8rem;
     text-align: center;
+    width: 440px;
   }
 
   .hero {
