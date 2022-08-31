@@ -260,6 +260,11 @@ button.cta {
   width: 275px;
 }
 
+.baddies-header {
+  margin: 0 auto;
+  max-width: 70%;
+}
+
 .baddie-list {
   display: flex;
   justify-content: space-between;
@@ -416,10 +421,6 @@ footer p {
     display: block;
   }
 
-  .typewrite {
-    text-align: center;
-  }
-
   .feedback-list {
     display: flex;
     flex-direction: row;
@@ -485,6 +486,10 @@ footer p {
   h1,
   .typewrite {
     font-size: 4rem;
+  }
+
+  .typewrite {
+    text-align: center;
   }
 
   .hero {
