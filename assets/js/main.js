@@ -24,22 +24,35 @@ const brandSwiper = new Swiper('.brands-swiper', {
   },
 });
 
-const entriesSwiper = new Swiper('.entries-swiper', {
-  autoplay: {
-    delay: 2000,
-  },
-  slidesPerView: 1,
-  spaceBetween: 10,
-  breakpoints: {
-    480: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-  },
-  pagination: {
-    el: '.entries-swiper-pagination',
-  },
-});
+var init = false;
+let entriesSwiper = Swiper;
+
+function swiperCard() {
+  if (window.innerWidth <= 639) {
+    if (!init) {
+      init = true;
+      entriesSwiper = new Swiper('.entries-swiper', {
+        autoplay: {
+          delay: 2000,
+        },
+        breakpoints: {
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          },
+        },
+        pagination: {
+          el: '.entries-swiper-pagination',
+        },
+      });
+    }
+  } else if (init) {
+    entriesSwiper.destroy();
+    init = false;
+  }
+}
+swiperCard();
+window.addEventListener("resize", swiperCard);
 
 const TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;

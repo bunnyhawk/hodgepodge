@@ -2,9 +2,7 @@ require('dotenv').config();
 const marked = require("marked");
 const contentful = require("contentful");
 const client = contentful.createClient({
-  // This is the space ID. A space is like a project folder in Contentful terms
   space: process.env.CTFL_SPACE,
-  // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
   accessToken: process.env.CTFL_ACCESSTOKEN
 });
 
@@ -42,7 +40,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("baddie", function (baddie) {
     return `
       <li class="baddie">
-        <span class="baddie-logo blue">${imageProcessing(baddie.baddieImage)}</span>
+        <a class="baddie-logo blue" href="${baddie.baddieLink}" target="_blank" rel="noopener noreferrer">
+          ${imageProcessing(baddie.baddieImage)}
+        </a>
         <span class="baddie-name">${baddie.baddieName}</span>
         <span class="baddie-relationship">${baddie.baddieRelationship}</span>
       </li>`;

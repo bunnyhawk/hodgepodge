@@ -29,11 +29,10 @@ layout: layout.liquid
       <a href="#contact" class="cta pink">Get Started</a>
     </div>
     
-    <video loop autoplay>
-        <source src="/assets/video/TOP_GIF_01.webm"
-                type="video/webm">
-        <source src="/assets/video/TOP_GIF_01.mp4"
-                type="video/mp4">
+    <video preload="auto" autoplay loop muted>
+      {%- for video in page.headerVideos -%}
+        <source src="{{video.fields.file.url}}" type="{{video.fields.file.contentType}}">
+      {% endfor %}
         Sorry, your browser doesn't support embedded videos.
     </video>
     
@@ -80,9 +79,9 @@ layout: layout.liquid
     <div class="sub-header">{% documentToHtmlString page.subCopyWhatSay %}</div>
     <div class="entries-swiper swiper">
       <ul class="swiper-wrapper">
-        {% for entry in page.theySayEntries -%}
+        {%- for entry in page.theySayEntries -%}
           {% theySayEntry entry %}
-        {% endfor -%}
+        {% endfor %}
       </ul>
       <div class="entries-swiper-pagination"></div>
     </div>
@@ -107,9 +106,9 @@ layout: layout.liquid
       <h2 class="baddies-header">{{page.headerBiz}}</h2>
       <div class="sub-header">{% documentToHtmlString page.subCopyBiz %}</div>
       <ul class="baddie-list">
-        {% for entry in page.baddies -%}
+        {%- for entry in page.baddies -%}
           {% baddie entry %}
-        {% endfor -%}
+        {% endfor %}
       </ul>
     </div>
   </section>
@@ -130,9 +129,9 @@ layout: layout.liquid
         <label>Your Monthly Budget
           <select name="submitted-monthly-budget">
             <option value="" disabled selected>Please select your monthly budget</option>
-            {% for budget in page.copyFormBudgetOptions -%}
+            {%- for budget in page.copyFormBudgetOptions -%}
               <option>{{budget}}</option>
-            {% endfor -%}
+            {% endfor %}
           </select>
         </label>
         <label>What are your goals?

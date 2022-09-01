@@ -18,8 +18,5 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.1.0",
     "marked": "^1.1.0"
-  },
-  "dependencies": {
-    "swiper": "^8.3.2"
   }
 }
