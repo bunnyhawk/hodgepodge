@@ -15,7 +15,7 @@ function imageProcessing(photo, className) {
             srcset="https:${photo.fields.file.url}?w=480&fm=webp&q=80&fit=fill&f=faces 480w,
             https:${photo.fields.file.url}?w=800&fm=webp&q=80&fit=fill&f=faces 800w" sizes="(max-width: 600px) 480px,800px"
             src="https:${photo.fields.file.url}?w=480&fit=fill&f=faces"
-            alt="${photo.fields.description || photo.fields.title}" loading="lazy">`;
+            alt="${photo.fields.description || photo.fields.title}">`;
 }
 
 module.exports = function (eleventyConfig) {
