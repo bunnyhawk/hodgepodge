@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ title }}</title>
-  <meta name="description" content="">
+  <title>Hodgepodge Creatives</title>
+  <meta name="description" content="{{page.siteDescription}}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
   <meta property="og:title" content="Hodgepodge Creatives" />
@@ -11,12 +11,12 @@
   <meta property="og:url" content="{{ url }}" />
   <meta property="og:image" content="images/share-image.png" />
   <meta property="og:site_name" content="Hodgepodge Creatives" />
-  <meta property="og:description" content="" />
+  <meta property="og:description" content="{{page.siteDescription}}" />
 
   <link rel="stylesheet" href="https://use.typekit.net/fkb3vjj.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
-  <noscript><link rel="stylesheet" href="{{ '/assets/css/noscript.css' | url }}" /></noscript>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 
   {% if google-id %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{google-id}}"></script>
@@ -33,6 +33,9 @@
   
 </head>
 <body class="is-preload">
+  <script>
+  console.log({{page}})
+  </script>
 
   {{content}}
 
