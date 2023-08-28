@@ -478,6 +478,7 @@ footer p {
   }
 
   .bio {
+    flex: 1;
     margin: 150px 2rem 4rem;
   }
 
